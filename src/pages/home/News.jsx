@@ -5,6 +5,20 @@ import news2 from "../../assets/news/news-2.png"
 import news3 from "../../assets/news/news-3.png"
 import news4 from "../../assets/news/news-4.png"
 
+
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+// import required modules
+import { Pagination } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+import BookCard from '../books/BookCard'
+
 const news = [
     {
         "id": 1,
@@ -40,7 +54,59 @@ const news = [
 
 const News = () => {
   return (
-    <div>News</div>
+    <div className='py-16'>
+        <h2 className='text-3xl font-semibold mb-6'>News</h2>
+
+        <Swiper
+     
+     className="mySwiper"
+     slidesPerView={1}
+     spaceBetween={30}
+     navigation={true}
+     modules={[Pagination,Navigation]}
+     breakpoints={{
+       640: {
+         slidesPerView: 1,
+         spaceBetween: 20,
+       },
+       768: {
+         slidesPerView: 2,
+         spaceBetween: 40,
+       },
+       1024: {
+         slidesPerView: 2,
+         spaceBetween: 50,
+       },
+       1180: {
+         slidesPerView: 2,
+         spaceBetween: 50,
+       },
+     }}
+     
+     
+   >
+     
+     
+  
+         
+         { 
+         news.map(article=>(
+             <SwiperSlide key={article}>
+                <div className='mainContainer flex justify-between items-center'>
+                <div className='leftSide p-2 m-2 w-64 '  > <img src={article.image} /> </div>
+                <div className='rightSide flex flex-col justify-between' >
+                    <div className='text-xl font-bold py-4'>{article.title}</div>
+                    <div className='text-lg'>{article.description.slice(0,100)}</div>
+                    
+                </div>
+                </div>
+                </SwiperSlide>
+           
+         ))
+         }
+         
+          </Swiper>
+    </div>
   )
 }
 
