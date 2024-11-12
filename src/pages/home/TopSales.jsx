@@ -14,6 +14,7 @@ import 'swiper/css/navigation';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
+
 const categories = [
     "Choose a genre",
     "Business",
@@ -26,7 +27,7 @@ const TopSales = () => {
 
     const [books,setBooks] = useState([]);
     const [selectedCategory,setSelectedCategory] = useState("Choose a genre");
-    const [filteredbooks,setFilteredBooks] = useState(books)
+
 
     useEffect(()=>{
         fetch("books.json")
@@ -34,12 +35,9 @@ const TopSales = () => {
         .then((data) => setBooks(data))
     },[])
 
-    useEffect(()=>{
-        let filteredbooks = selectedCategory === "Choose a genre" ? books : books.filter(book => book.category === selectedCategory.toLowerCase());
-        setFilteredBooks(filteredbooks)
-    },[selectedCategory,books])
 
-    
+  let filteredbooks = selectedCategory === "Choose a genre" ? books : books.filter(book => book.category === selectedCategory.toLowerCase());
+
 
   return (
     <div className='py-10'>
@@ -65,6 +63,9 @@ const TopSales = () => {
         </div>
       
         <Swiper
+        pagination={{
+          clickable: true,
+        }}
         className="mySwiper"
         slidesPerView={1}
         spaceBetween={30}
@@ -101,6 +102,7 @@ const TopSales = () => {
               
             ))
             }
+            
              </Swiper>
          
     </div>
