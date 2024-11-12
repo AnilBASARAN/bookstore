@@ -6,6 +6,9 @@ import { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 // import required modules
 import { Pagination } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -62,27 +65,31 @@ const TopSales = () => {
         </div>
       
         <Swiper
+        className="mySwiper"
         slidesPerView={1}
-        spaceBetween={10}
-        pagination={{
-          clickable: true,
-        }}
+        spaceBetween={30}
+        navigation={true}
+        modules={[Pagination,Navigation]}
         breakpoints={{
           640: {
-            slidesPerView: 2,
+            slidesPerView: 1,
             spaceBetween: 20,
           },
           768: {
-            slidesPerView: 4,
+            slidesPerView: 2,
             spaceBetween: 40,
           },
           1024: {
-            slidesPerView: 5,
+            slidesPerView: 3,
+            spaceBetween: 50,
+          },
+          1180: {
+            slidesPerView: 3,
             spaceBetween: 50,
           },
         }}
-        modules={[Pagination]}
-        className="mySwiper"
+        
+        
       >
         
         
