@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import BookCard from '../books/BookCard';
 import "../../index.css"
+import { useRef } from 'react';
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+// import required modules
+import { Pagination } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 const categories = [
     "Choose a genre",
@@ -14,7 +23,7 @@ const TopSales = () => {
 
     const [books,setBooks] = useState([]);
     const [selectedCategory,setSelectedCategory] = useState("Choose a genre");
-
+    const [filteredbooks,setFilteredBooks] = useState(books)
 
     useEffect(()=>{
         fetch("books.json")
@@ -22,8 +31,13 @@ const TopSales = () => {
         .then((data) => setBooks(data))
     },[])
 
-    let filteredbooks = selectedCategory === "Choose a genre" ? books : books.filter(book => book.category === selectedCategory.toLowerCase());
-    console.log(filteredbooks);
+    useEffect(()=>{
+        let filteredbooks = selectedCategory === "Choose a genre" ? books : books.filter(book => book.category === selectedCategory.toLowerCase());
+        setFilteredBooks(filteredbooks)
+    },[selectedCategory,books])
+
+    
+
   return (
     <div className='py-10'>
         <h2 className='text-3xl font-semibold mb-6'>TopSales</h2>
@@ -47,13 +61,40 @@ const TopSales = () => {
             </select>
         </div>
       
+        <Swiper
+        slidesPerView={1}
+        spaceBetween={10}
+        pagination={{
+          clickable: true,
+        }}
+        breakpoints={{
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 4,
+            spaceBetween: 40,
+          },
+          1024: {
+            slidesPerView: 5,
+            spaceBetween: 50,
+          },
+        }}
+        modules={[Pagination]}
+        className="mySwiper"
+      >
+        
+        
+     
             
-            {
+            { filteredbooks.length > 0 &&
             filteredbooks.map(book=>(
-              <BookCard key={book} book={book} />
+                <SwiperSlide key={book}><BookCard  book={book} /></SwiperSlide>
+              
             ))
             }
-            
+             </Swiper>
          
     </div>
   )

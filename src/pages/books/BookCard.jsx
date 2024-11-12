@@ -5,7 +5,14 @@ import {Link} from "react-router-dom"
 import "../../index.css"
 
 const BookCard = (props) => {
-   const {book} = props;
+  const {book} = props;
+  // Instead of using book.description.length directly
+// Check if book.description exists first
+const descriptionLength = book.description ? book.description.length : 0;
+
+// Then, use this safely in your component
+
+
 
   return (
     <div className=" flex p-2 m-2 items-center justify-center  rounded-lg transition-shadow duration-300">
@@ -26,7 +33,11 @@ const BookCard = (props) => {
       <Link to={`/books/${book._id}`}><h3 className="text-xl font-semibold hover:text-blue-600 mb-3">
       {book.title}
         </h3></Link>
-      <p className="text-gray-600 w-42 mb-5">{book.description.length > 80 ? `${book.description.slice(0,60)}...`: book.description}</p>
+        {
+        descriptionLength < 0 ?  <p> &quot;No description available.&quot; </p> : <p className="text-gray-600 w-42 mb-5">{descriptionLength > 80 ? `${book.description.slice(0,60)}...`: book.description}</p> 
+        }
+          
+      
       <p className="font-medium mb-5">
       {`${"$ "} ${book.newPrice}`} <span className="line-through font-normal ml-2"> {`${"$ "} ${book.oldPrice}`}</span>
       </p>
