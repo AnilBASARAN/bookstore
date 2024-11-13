@@ -82,11 +82,11 @@ const TopSales = () => {
           },
           1024: {
             slidesPerView: 3,
-            spaceBetween: 50,
+            spaceBetween: 30,
           },
           1180: {
             slidesPerView: 3,
-            spaceBetween: 50,
+            spaceBetween: 30,
           },
         }}
         
@@ -98,7 +98,7 @@ const TopSales = () => {
             
             { filteredbooks.length > 0 &&
             filteredbooks.map(book=>(
-                <SwiperSlide key={book}><BookCard  book={book} /></SwiperSlide>
+                <SwiperSlide className='  py-4' key={book}><BookCard  book={book} /></SwiperSlide>
               
             ))
             }

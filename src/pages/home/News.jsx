@@ -18,6 +18,7 @@ import 'swiper/css/navigation';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import BookCard from '../books/BookCard'
+import { Link } from 'react-router-dom'
 
 const news = [
     {
@@ -95,7 +96,8 @@ const News = () => {
                 <div className='mainContainer flex justify-between items-center'>
                 <div className='leftSide p-2 m-2 w-64 '  > <img src={article.image} /> </div>
                 <div className='rightSide flex flex-col justify-between' >
-                    <div className='text-xl font-bold py-4'>{article.title}</div>
+                    <Link to={"/"} className='text-xl font-bold py-4'>{article.title}</Link>
+                    <div className='w-24 h-[4px] bg-primary mb-5' ></div> 
                     <div className='text-lg'>{article.description.slice(0,100)}</div>
                     
                 </div>
