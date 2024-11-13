@@ -7,7 +7,7 @@ import { FaHeart } from "react-icons/fa";
 import { HiShoppingCart } from "react-icons/hi";
 import avatarImg from "../assets/avatar.png";
 
-const currentUser = true;
+const currentUser = false;
 
 const Navbar = () => {
 
