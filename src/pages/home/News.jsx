@@ -1,4 +1,4 @@
-import React from 'react'
+
 
 import news1 from "../../assets/news/news-1.png"
 import news2 from "../../assets/news/news-2.png"
@@ -17,7 +17,7 @@ import 'swiper/css/navigation';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
-import BookCard from '../books/BookCard'
+
 import { Link } from 'react-router-dom'
 
 const news = [
@@ -91,8 +91,8 @@ const News = () => {
   
          
          { 
-         news.map(article=>(
-             <SwiperSlide key={article}>
+         news.map((article,index)=>(
+             <SwiperSlide key={index}>
                 <div className='mainContainer flex justify-between items-center'>
                 <div className='leftSide p-2 m-2 w-64 '  > <img src={article.image} /> </div>
                 <div className='rightSide flex flex-col justify-between' >

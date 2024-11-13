@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import BookCard from '../books/BookCard';
 import "../../index.css"
-import { useRef } from 'react';
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 // import required modules
@@ -97,8 +97,8 @@ const TopSales = () => {
      
             
             { filteredbooks.length > 0 &&
-            filteredbooks.map(book=>(
-                <SwiperSlide className='  py-4' key={book}><BookCard  book={book} /></SwiperSlide>
+            filteredbooks.map((book,index)=>(
+                <SwiperSlide className='  py-4' key={index}><BookCard  book={book} /></SwiperSlide>
               
             ))
             }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 // import required modules
@@ -61,8 +61,8 @@ const Recommended = () => {
      
             
             { books.length > 0 &&
-            books.slice(5,10).map(book=>(
-                <SwiperSlide key={book}><BookCard  book={book} /></SwiperSlide>
+            books.slice(5,10).map((book,index)=>(
+                <SwiperSlide key={index}><BookCard  book={book} /></SwiperSlide>
               
             ))
             }

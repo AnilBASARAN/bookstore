@@ -6,12 +6,17 @@ import { HiOutlineUser } from "react-icons/hi";
 import { FaHeart } from "react-icons/fa";
 import { HiShoppingCart } from "react-icons/hi";
 import avatarImg from "../assets/avatar.png";
+import { useSelector } from 'react-redux';
 
 const currentUser = false;
 
 const Navbar = () => {
 
+ const cartItems = useSelector(state => state.cart.cartItems);
+ console.log(cartItems)
   const [isDropdownOpen,setIsDropdownOpen] = useState(false);
+
+  
   const navigation = [
     {name: "Dashboard",href:"/dashboard"},
     {name: "About",href:"/about"},

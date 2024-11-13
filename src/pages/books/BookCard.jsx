@@ -1,11 +1,20 @@
-import React from 'react'
+/* eslint-disable react/prop-types */
+
 import {FiShoppingCart} from "react-icons/fi"
 import { getImgUrl } from '../../utils/getImgUrl'
 import {Link} from "react-router-dom"
 import "../../index.css"
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../../redux/features/cart/cartSlice'
 
-const BookCard = (props) => {
-  const {book} = props;
+const BookCard = ({book}) => {
+
+  const dispatch = useDispatch();
+
+  const handleAddtoCart = (product) =>{
+    dispatch(addToCart(product))
+  } 
+
   // Instead of using book.description.length directly
 // Check if book.description exists first
 const descriptionLength = book.description ? book.description.length : 0;
@@ -42,7 +51,9 @@ const descriptionLength = book.description ? book.description.length : 0;
       <p className="font-medium mb-5">
       {`${"$ "} ${book.newPrice}`} <span className="line-through font-normal ml-2"> {`${"$ "} ${book.oldPrice}`}</span>
       </p>
-      <button className="btn-primary px-6 space-x-1 flex items-center gap-1 ">
+      <button
+      onClick={()=> handleAddtoCart(book)}
+       className="btn-primary px-6 space-x-1 flex items-center gap-1 ">
         <FiShoppingCart className="" />
         <span>Add to Cart</span>
       </button>

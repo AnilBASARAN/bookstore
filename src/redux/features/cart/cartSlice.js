@@ -4,7 +4,7 @@ const initialState = {
   cartItems: [],
 }
 
-export const cartSlice = createSlice({
+const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
@@ -22,4 +22,4 @@ export const cartSlice = createSlice({
 
 export const { addToCart } = cartSlice.actions;
 
-export default cartSlice.reducer
+export default cartSlice.reducer;
