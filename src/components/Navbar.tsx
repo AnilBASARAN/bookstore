@@ -13,10 +13,12 @@ const currentUser = false;
 const Navbar = () => {
 
  const cartItems = useSelector(state => state.cart.cartItems);
- console.log(cartItems)
+
+let cartLength = cartItems.length || 0 ;
+
   const [isDropdownOpen,setIsDropdownOpen] = useState(false);
 
-  
+
   const navigation = [
     {name: "Dashboard",href:"/dashboard"},
     {name: "About",href:"/about"},
@@ -89,7 +91,7 @@ const Navbar = () => {
         className='bg-primary rounded-sm p-1 sm:px-6 flex items-center px-2' 
         to={"/cart"} >
         <HiShoppingCart />
-        <span className='sm:ml-1 semi-bold text-sm'>0</span>
+        <span className='sm:ml-1 semi-bold text-sm'>{cartLength}</span>
         </Link>
         </div>
       </nav>
