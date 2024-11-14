@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useForm } from 'react-hook-form';
 
 
-
+// TODO we will get the current user from auth
 const CheckoutPage = ({currentUser,isChecked=true}) => {
 
     const [submitData,setSubmitData] = useState({})
