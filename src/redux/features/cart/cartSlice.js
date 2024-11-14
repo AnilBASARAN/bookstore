@@ -23,7 +23,7 @@ const cartSlice = createSlice({
     }else{
         Swal.fire({
             icon: "error",
-            title: "This Item already exists in your cart"
+            title: "This Product already exists in your cart"
             
           });
         
