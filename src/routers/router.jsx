@@ -11,7 +11,7 @@ const currentUser = {
   
 }
 
-
+// this is the router
 const router = createBrowserRouter([
   {
     path: "/",
