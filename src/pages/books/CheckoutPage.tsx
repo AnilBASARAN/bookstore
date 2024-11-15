@@ -18,8 +18,24 @@ const CheckoutPage = ({currentUser,isChecked=true}) => {
     } = useForm()
   
   
-    const onSubmit = (data) => setSubmitData(data);
-          console.log(submitData)
+    const onSubmit = (data) => {
+        setSubmitData(data);
+        const newOrder = {
+            name:data.name,
+            email:data.email,
+            adress: {
+                city: data.city,
+                country: data.country,
+                state: data.state,
+                zipcode: data.zipcode
+            },
+            phone: data.phone,
+            productIds:cartItems.map(item=>item?._id),
+            totalPrice:totalPrice,
+        }
+        console.log("newOrder: ",newOrder)
+    }
+          
 
       const dispatch = useDispatch()
 
